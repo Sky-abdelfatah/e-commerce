@@ -11,6 +11,10 @@
     @apply disabled:bg-gray-600 disabled:cursor-not-allowed mt-4 w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 transition duration-300;
   }
 }
+.owl-theme .owl-dots .owl-dot {
+  transform: translatey(-40px);
+}
+
 .btn-main {
   background-color: var(--main-color);
   padding: 7px 20px;

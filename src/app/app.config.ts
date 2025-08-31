@@ -4,7 +4,7 @@ import {
   provideZoneChangeDetection,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { routes } from './app.routes';
 import {
   provideClientHydration,
@@ -19,5 +19,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch()),
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
+    provideAnimations(),
   ],
 };

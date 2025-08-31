@@ -6,11 +6,13 @@ import { environment } from '../../../../environments/environment.development';
 @Injectable({
   providedIn: 'root',
 })
-export class ProductsService {
+export class AuthService {
   private readonly httpClient = inject(HttpClient);
-  getProducts(pageNumber: number = 1): Observable<any> {
-    return this.httpClient.get(
-      environment.baseUrl + 'products?page={pageNumber}'
-    );
+  registerform(data: object): Observable<any> {
+    return this.httpClient.post(environment.baseUrl + 'auth/signup', data);
+  }
+
+  loginform(data: object): Observable<any> {
+    return this.httpClient.post(environment.baseUrl + 'auth/signin', data);
   }
 }
