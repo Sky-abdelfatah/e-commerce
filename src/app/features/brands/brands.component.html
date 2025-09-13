@@ -1,1 +1,25 @@
-<p>brands works!</p>
+<section class="bg-gray-100 py-16 border border-gray-400">
+  <div class="container mx-auto">
+    <h2
+      class="text-5xl text-green-500 text-center"
+      aria-label="Popular Products"
+    >
+      brand list
+    </h2>
+    <div class="flex justify-center mt-4">
+      <input
+        type="text"
+        [(ngModel)]="text"
+        placeholder="Search products..."
+        class="border border-green-500 rounded px-4 py-2 w-full md:w-1/3"
+      />
+    </div>
+    <div
+      class="parent mt-4 grid lg:grid-cols-6 md:grid-cols-3 sm:grid-cols-2 gap-4"
+    >
+      @for (brand of brandlist |search:text; track brand._id) {
+      <app-brand-card [brand]="brand"></app-brand-card>
+      }
+    </div>
+  </div>
+</section>

@@ -1,3 +1,4 @@
+import { CartService } from '../cart/service/cart.service';
 import { Product } from './../../core/models/product.interface';
 import { ProductDetailsService } from './services/product-details.service';
 import { Component, inject, OnInit } from '@angular/core';
@@ -33,6 +34,18 @@ export class DetailsComponent implements OnInit {
         this.Productdetails = res.data;
       },
       error: (err: any) => {
+        console.log(err);
+      },
+    });
+  }
+
+  private readonly CartService = inject(CartService);
+  addproductitemtocart(id: string): void {
+    this.CartService.addproducttocart(id).subscribe({
+      next: (res) => {
+        console.log(res);
+      },
+      error: (err) => {
         console.log(err);
       },
     });

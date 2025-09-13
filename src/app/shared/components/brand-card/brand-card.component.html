@@ -1,0 +1,18 @@
+<div
+  class="border overflow-hidden group/card border-gray-400 shadow-md p-1 relative rounded bg-white hover:shadow-lg transition duration-300"
+>
+  <div class="cursor-pointer">
+    <img
+      [src]="brand.image"
+      [alt]="brand.name"
+      class="w-full object-cover rounded-t"
+      height="200px"
+    />
+    <h3 class="text-sm font-semibold text-green-700 mt-2">
+      {{ brand.name }}
+    </h3>
+    <h4 class="text-lg py-2 text-gray-800 font-bold line-clamp-1">
+      {{ brand.slug }}
+    </h4>
+  </div>
+</div>

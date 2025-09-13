@@ -11,6 +11,8 @@ import { DetailsComponent } from './features/details/details.component';
 import { CheckoutComponent } from './features/checkout/checkout.component';
 import { ProductsComponent } from './features/products/products.component';
 import { NotfoundComponent } from './features/notfound/notfound.component';
+import { authGuard } from './core/guards/auth-guard';
+import { isLoggedGuard } from './core/guards/is-logged-guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,6 +20,7 @@ export const routes: Routes = [
   {
     path: '',
     component: AuthLayoutComponent,
+    canActivate: [isLoggedGuard],
     children: [
       {
         path: 'login',
@@ -42,6 +45,7 @@ export const routes: Routes = [
   {
     path: '',
     component: BlankLayoutComponent,
+    canActivate: [authGuard],
     children: [
       {
         path: 'home',
@@ -64,21 +68,22 @@ export const routes: Routes = [
         title: 'Product page',
       },
       {
-        path: 'brand',
+        path: 'brands',
         loadComponent: () =>
           import('./features/brands/brands.component').then(
             (m) => m.BrandsComponent
           ),
-        title: 'Brand page',
+        title: 'Brands page',
       },
       {
-        path: 'category',
+        path: 'categories',
         loadComponent: () =>
           import('./features/categories/categories.component').then(
             (m) => m.CategoriesComponent
           ),
-        title: 'Category page',
+        title: 'Categories page',
       },
+
       {
         path: 'details/:slug/:id',
         loadComponent: () =>
@@ -96,7 +101,16 @@ export const routes: Routes = [
         title: 'Details page',
       },
       {
-        path: 'checkout',
+        path: 'allorders',
+        loadComponent: () =>
+          import('./features/allorders/allorders.component').then(
+            (m) => m.AllordersComponent
+          ),
+        title: 'All Orders page',
+      },
+
+      {
+        path: 'checkout/:id',
         loadComponent: () =>
           import('./features/checkout/checkout.component').then(
             (m) => m.CheckoutComponent

@@ -1,7 +1,10 @@
 <div
   class="border overflow-hidden group/card border-gray-400 shadow-md p-1 relative rounded bg-white hover:shadow-lg transition duration-300"
 >
-  <div [routerLink]="['/details', product.slug, product.id]  " class="cursor-pointer">
+  <div
+    [routerLink]="['/details', product.slug, product._id]"
+    class="cursor-pointer"
+  >
     <img
       [src]="product.imageCover"
       [alt]="product.title"
@@ -21,9 +24,11 @@
       </span>
     </div>
   </div>
+  <hr />
 
   <button
-    class="btn transform translate-y- [120%] group-hover/card:translate-y-0"
+    (click)="addproductitemtocart(product._id)"
+    class="btn transform translate-y-[120%] group-hover/card:translate-y-0"
   >
     Add to Cart
   </button>
