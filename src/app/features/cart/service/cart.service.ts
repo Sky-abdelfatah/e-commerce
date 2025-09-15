@@ -26,7 +26,7 @@ export class CartService {
   getloggedusercart(): Observable<any> {
     return this.httpClient.get(environment.baseUrl + 'cart', this.myheaders);
   }
-  removefromewhishlist(id: string): Observable<any> {
+  removespeficcartitem(id: string): Observable<any> {
     return this.httpClient.delete(
       environment.baseUrl + `cart/${id}`,
       this.myheaders
